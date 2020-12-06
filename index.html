@@ -38,13 +38,13 @@
             .catch(error => console.log('error', error));
         }
         function getOutput() {
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            var requestOptions = {
-                method: 'GET',
-                headers: myHeaders
-            };
-            fetch("https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev", requestOptions)
+            // var myHeaders = new Headers();
+            // myHeaders.append("Content-Type", "application/json");
+            // var requestOptions = {
+            //     method: 'GET',
+            //     headers: myHeaders
+            // };
+            fetch("https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev", "GET")
             .then(result => document.getElementById("output_field").innerHTML = JSON.parse(result).body)
             .catch(error => console.log('error', error));
             ;
