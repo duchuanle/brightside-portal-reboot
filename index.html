@@ -4,55 +4,10 @@
     <meta charset="UTF-8">
     <title>Hello World</title>
     <!-- Add some CSS to change client UI -->
-    <style>
-    body {
-        background-color: #232F3E;
-        }
-    label, button {
-        color: #FF9900;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
-        margin-left: 40px;
-        }
-     input {
-        color: #232F3E;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
-        margin-left: 20px;
-        }
-    </style>
-    <script>
-        var callAPI = (firstName,lastName)=>{
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: raw,
-                redirect: 'follow'
-            };
-            fetch("https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev", requestOptions)
-            .then(response => response.text())
-            .then(result => alert(JSON.parse(result).body))
-            .catch(error => console.log('error', error));
-        }
-        function getOutput() {
-            // var myHeaders = new Headers();
-            // myHeaders.append("Content-Type", "application/json");
-            var requestOptions = {
-                method: 'GET',
-            };
-            fetch("https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev", requestOptions)
-            .then(response => response.text())
-            // .then(result => document.getElementById("output_field").innerHTML = result.body)
-            .then(result => alert(JSON.parse(result)))
-            .catch(error => console.log('error', error));
-            ;
-        }
-    </script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script>
 </head>
-<body>
+<body onload="getOutput()">
     <form>
         <label>First Name :</label>
         <input type="text" id="fName">
@@ -61,9 +16,10 @@
         <!-- set button onClick method to call function we defined passing input values as parameters -->
         <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call API</button>
         <br/><br/>
-        <label>Output</label>
-        <p id="output_field"></p>
-        <button type="button" onclick="getOutput()">Get Output</button>
+        <label>Customer</label>
+        <input type="text" id="firstName">
+        <input type="text" id="lastName">
+        <!-- <button type="button" onclick="getOutput()">Get Output</button> -->
     </form>
 </body>
 </html>
