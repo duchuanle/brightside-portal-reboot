@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-brightsideportal-dev-214356-authRole",
+      "UnauthRoleArn": "arn:aws:iam::494636966945:role/amplify-brightsideportal-dev-214356-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::494636966945:role/amplify-brightsideportal-dev-214356-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-brightsideportal-dev-214356-deployment",
+      "UnauthRoleName": "amplify-brightsideportal-dev-214356-unauthRole",
+      "StackName": "amplify-brightsideportal-dev-214356",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:494636966945:stack/amplify-brightsideportal-dev-214356/457d1b30-3df9-11eb-9508-0218c804214a",
+      "AmplifyAppId": "d26cn353vdhtnb"
+    }
+  }
+}
