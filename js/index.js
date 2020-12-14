@@ -2,7 +2,12 @@ import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 
+const currentConfig = Auth.configure();
+
+console.log(currentConfig)
+
 function callAPI(firstName,lastName) {
+    console.log(currentConfig)
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
