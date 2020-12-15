@@ -1,28 +1,3 @@
-import Amplify, { Auth } from 'aws-amplify';
-import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
-
-const currentConfig = Auth.configure();
-
-console.log(currentConfig)
-
-function callAPI(firstName,lastName) {
-    console.log(currentConfig)
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-    };
-    fetch("https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev", requestOptions)
-    .then(response => response.text())
-    .then(result => alert(JSON.parse(result).body))
-    .catch(error => console.log('error', error));
-}
-
 function getOutput() {
     // var myHeaders = new Headers();
     // myHeaders.append("Content-Type", "application/json");
@@ -53,5 +28,13 @@ function getOutput() {
     //.then(result => alert(result))
     .catch(error => console.log('error', error));
     ;
+}
+
+function redirect() {
+    var claimNo = document.getElementById("warranty-number").value;
+    var email = document.getElementById("email").value;
+    //window.cookie = "claimNo=" + claimNo + "; email=" + email;
+    var url = "amendment.html?claimNo=" + claimNo + "&email=" + email;
+    window.location = url;
 }
 

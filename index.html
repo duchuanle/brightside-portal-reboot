@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Amendment Portal</title>
-        <script type="module" src="js/index.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
+        <script src="js/index.js"></script>
         <link rel="stylesheet" href="css/index.css">
     </head>
-
     <body>  
         <div class="topnav">
             <img src="images/logo.png">
@@ -36,9 +36,7 @@
                     </form>
                 </div>
                 <div id="login-button">
-                    <a href="amendment.html">
-                        <button> Login </button>
-                    </a>
+                    <button onclick="redirect()"> Login </button>
                     <button >Send login code</button>
                 </div>
             </div>
