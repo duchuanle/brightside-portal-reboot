@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "brightsideportal50b75848": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

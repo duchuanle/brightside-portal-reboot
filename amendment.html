@@ -7,7 +7,7 @@
         <script src="js/amendment.js"></script>
         <link rel="stylesheet" href="css/amendment.css">
     </head>
-    <body>
+    <body onload="fetchData()">
         <div class="topnav">
             <img src="images/logo.png">
             <a href="#contact">CONTACT</a>
@@ -17,156 +17,153 @@
             <a href="#home">HOME</a>
         </div>
         <div class="amendment-container">
-            <div class="credentials-flex">
-                <h2>Amendment form </h2>
-                <button onclick="fetchData()">Load</button>
-                <div id="credentials">
-                    <form id="info-form">
-                        <div>
-                            <label for="claimNo">Amendment for policy number</label><br>
-                            <input type="text" class="input-field" id="claimNo" placeholder="Warranty plan number" readonly>
-                        </div>
-                        <div>
-                            <label for="registration_type">Registration type</label><br>
-                            <input type="text" class="input-field" id="registration_type" placeholder="" readonly>
-                        </div>
-                        <div>
-                            <label for="modifiedBy">Amended by</label><br>
-                            <input type="text" class="input-field" id="modifiedBy"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="warranty_product_code">Warranty product code</label><br>
-                            <input type="text" class="input-field" id="warranty_product_code"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="store">Store</label><br>
-                            <input type="text" class="input-field" id="store"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="staff_name">Staff name</label><br>
-                            <input type="text" class="input-field" id="staff_name"  placeholder=""><br>
-                        </div>  
-                        <!-- <div>
-                            <label for="product_purchase_date">Product purchase date</label><br>
-                            <input type="text" class="input-field" id="product_purchase_date"  placeholder=""><br>
-                        </div>   -->
-                        <div>
-                            <h3>Purchase date</h3>
-                            <label for="product_purchase_day">Day</label><br>
-                            <input type="text" class="input-field" id="product_purchase_day"  placeholder=""><br>
-                            <label for="product_purchase_month">Month</label><br>
-                            <input type="text" class="input-field" id="product_purchase_month"  placeholder=""><br>
-                            <label for="product_purchase_year">Year</label><br>
-                            <input type="text" class="input-field" id="product_purchase_year"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="warranty_purchase_price">Warranty purchase price</label><br>
-                            <input type="text" class="input-field" id="warranty_purchase_price"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="warranty_period">Warranty period</label><br>
-                            <input type="text" class="input-field" id="warranty_period"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="brand">Brand</label><br>
-                            <input type="text" class="input-field" id="brand"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="product_category">Product category</label><br>
-                            <input type="text" class="input-field" id="product_category"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="product_type">Product type</label><br>
-                            <input type="text" class="input-field" id="product_type"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="model_number">Model number</label><br>
-                            <input type="text" class="input-field" id="model_number"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="serial_number">Serial number</label><br>
-                            <input type="text" class="input-field" id="serial_number"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="product_purchase_price">Purchase price</label><br>
-                            <input type="text" class="input-field" id="product_purchase_price"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="customer_first_name">Customer first name</label><br>
-                            <input type="text" class="input-field" id="customer_first_name"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="customer_last_name">Last name</label><br>
-                            <input type="text" class="input-field" id="customer_last_name"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="postalAddress">Postal addrress</label><br>
-                            <input type="text" class="input-field" id="postalAddress"  placeholder=""><br>
-                            <!-- <input type="text" class="input-field" id="postalAddress_2"  placeholder=""><br>
-                            <input type="text" class="input-field" id="postalAddress_3"  placeholder=""><br>                         -->
-                        </div>  
-                        <div>
-                            <label for="postalSuburb">Postal suburb</label><br>
-                            <input type="text" class="input-field" id="postalSuburb"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="postalState">Postal state</label><br>
-                            <input type="text" class="input-field" id="postalState"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="postalPostcode">Postal code</label><br>
-                            <input type="text" class="input-field" id="postalPostcode"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="tax_invoice_number">Tax invoice number</label><br>
-                            <input type="text" class="input-field" id="tax_invoice_number"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="manufacturer_warranty_period">Manufacturer warranty period</label><br>
-                            <input type="text" class="input-field" id="manufacturer_warranty_period"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="email">Email</label><br>
-                            <input type="text" class="input-field" id="email"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="phone">Phone</label><br>
-                            <input type="text" class="input-field" id="phone"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="mobile">Mobile</label><br>
-                            <input type="text" class="input-field" id="mobile"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="contactID">ContactID</label><br>
-                            <input type="text" class="input-field" id="contactID"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="uniquecode">Unique code</label><br>
-                            <input type="text" class="input-field" id="uniquecode"  placeholder=""><br>
-                        </div>  
-                        <!-- <div>
-                            <label for="expiry">Expiry date</label><br>
-                            <input type="text" class="input-field" id="expiry"  placeholder=""><br>
-                        </div>   -->
-                        <div>
-                            <h3>Expiry</h3>
-                            <label for="expiry_day">Day</label><br>
-                            <input type="text" class="input-field" id="expiry_day"  placeholder=""><br>
-                            <label for="expiry_month">Month</label><br>
-                            <input type="text" class="input-field" id="expiry_month"  placeholder=""><br>
-                            <label for="expiry_year">Year</label><br>
-                            <input type="text" class="input-field" id="expiry_year"  placeholder=""><br>
-                        </div>  
-                        <div>
-                            <label for="updateComments">Reason for amendment</label><br>
-                            <input type="text" class="input-field" id="updateComments"  placeholder=""><br>
-                        </div>  
-                    </form>
-                </div>
-                <div id="login-button">
-                    <button onclick="sendUpdates()">Send login code</button>
-                </div>
+            <h1>Amendment form </h1>
+            <div id="credentials">
+                <form id="info-form">
+                    <div>
+                        <label for="claimNo">Amendment for policy number</label><br>
+                        <input type="text" class="input-field" id="claimNo" placeholder="" readonly>
+                    </div>
+                    <div>
+                        <label for="modifiedBy">Amended by</label><br>
+                        <input type="text" class="input-field" id="modifiedBy"  placeholder="" readonly><br>
+                    </div>  
+                    <div>
+                        <label for="registration_type">Registration type</label><br>
+                        <input type="text" class="input-field" id="registration_type" placeholder="" readonly>
+                    </div>
+                    <div>
+                        <label for="warranty_product_code">Warranty product code</label><br>
+                        <input type="text" class="input-field" id="warranty_product_code"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="store">Store</label><br>
+                        <input type="text" class="input-field" id="store"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="staff_name">Staff name</label><br>
+                        <input type="text" class="input-field" id="staff_name"  placeholder=""><br>
+                    </div>  
+                    <!-- <div>
+                        <label for="product_purchase_date">Product purchase date</label><br>
+                        <input type="text" class="input-field" id="product_purchase_date"  placeholder=""><br>
+                    </div>   -->
+                    <div>
+                        <h3>Purchase date</h3>
+                        <label for="product_purchase_day">Day</label><br>
+                        <input type="text" class="input-field" id="product_purchase_day"  placeholder=""><br>
+                        <label for="product_purchase_month">Month</label><br>
+                        <input type="text" class="input-field" id="product_purchase_month"  placeholder=""><br>
+                        <label for="product_purchase_year">Year</label><br>
+                        <input type="text" class="input-field" id="product_purchase_year"  placeholder=""><br>
+                    </div><br><br>
+                    <div>
+                        <label for="warranty_purchase_price">Warranty purchase price</label><br>
+                        <input type="text" class="input-field" id="warranty_purchase_price"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="warranty_period">Warranty period</label><br>
+                        <input type="text" class="input-field" id="warranty_period"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="brand">Brand</label><br>
+                        <input type="text" class="input-field" id="brand"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="product_category">Product category</label><br>
+                        <input type="text" class="input-field" id="product_category"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="product_type">Product type</label><br>
+                        <input type="text" class="input-field" id="product_type"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="model_number">Model number</label><br>
+                        <input type="text" class="input-field" id="model_number"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="serial_number">Serial number</label><br>
+                        <input type="text" class="input-field" id="serial_number"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="product_purchase_price">Purchase price</label><br>
+                        <input type="text" class="input-field" id="product_purchase_price"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="customer_first_name">Customer first name</label><br>
+                        <input type="text" class="input-field" id="customer_first_name"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="customer_last_name">Last name</label><br>
+                        <input type="text" class="input-field" id="customer_last_name"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="postalAddress">Postal addrress</label><br>
+                        <input type="text" class="input-field" id="postalAddress"  placeholder=""><br>
+                        <!-- <input type="text" class="input-field" id="postalAddress_2"  placeholder=""><br>
+                        <input type="text" class="input-field" id="postalAddress_3"  placeholder=""><br>                         -->
+                    </div>  
+                    <div>
+                        <label for="postalSuburb">Postal suburb</label><br>
+                        <input type="text" class="input-field" id="postalSuburb"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="postalState">Postal state</label><br>
+                        <input type="text" class="input-field" id="postalState"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="postalPostcode">Postal code</label><br>
+                        <input type="text" class="input-field" id="postalPostcode"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="tax_invoice_number">Tax invoice number</label><br>
+                        <input type="text" class="input-field" id="tax_invoice_number"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="manufacturer_warranty_period">Manufacturer warranty period</label><br>
+                        <input type="text" class="input-field" id="manufacturer_warranty_period"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="email">Email</label><br>
+                        <input type="text" class="input-field" id="email"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="phone">Phone</label><br>
+                        <input type="text" class="input-field" id="phone"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="mobile">Mobile</label><br>
+                        <input type="text" class="input-field" id="mobile"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="contactID">ContactID</label><br>
+                        <input type="text" class="input-field" id="contactID"  placeholder=""><br>
+                    </div>  
+                    <div>
+                        <label for="uniquecode">Unique code</label><br>
+                        <input type="text" class="input-field" id="uniquecode"  placeholder=""><br>
+                    </div>  
+                    <!-- <div>
+                        <label for="expiry">Expiry date</label><br>
+                        <input type="text" class="input-field" id="expiry"  placeholder=""><br>
+                    </div>   -->
+                    <div>
+                        <h3>Expiry</h3>
+                        <label for="expiry_day">Day</label><br>
+                        <input type="text" class="input-field" id="expiry_day"  placeholder=""><br>
+                        <label for="expiry_month">Month</label><br>
+                        <input type="text" class="input-field" id="expiry_month"  placeholder=""><br>
+                        <label for="expiry_year">Year</label><br>
+                        <input type="text" class="input-field" id="expiry_year"  placeholder=""><br>
+                    </div><br><br>
+                    <div>
+                        <label for="updateComments">Reason for amendment</label><br>
+                        <input type="text" class="input-field" id="updateComments"  placeholder=""><br>
+                    </div>  
+                </form>
+            </div>
+            <div id="login-button">
+                <button onclick="sendUpdates()">Send login code</button>
             </div>
         </div>
     </body>

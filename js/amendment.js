@@ -1,53 +1,31 @@
-function getInfo(policyNumber) {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var pnum = JSON.stringify({"policy_number" : policyNumber})
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        body: pnum
-    };
-
-    fetch("https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev", requestOptions)
-    .then(response => response.text())
-    .then(result => {
-        var list = JSON.parse(result);
-        var outputText = "<ol>";
-        for (var i = 0; i <= list.length; i++) {
-            console.log(list[i]);
-            if (list[i] != null) 
-                outputText += "<li>" + list[i]["first_name"] + "; " + list[i]["last_name"] + "</li>";
-            i++;
-        }
-        outputText += "</ol>"
-        console.log(outputText);
-        document.getElementById("firstName").value = list[0]["first_name"];
-        document.getElementById("lastName").value = list[0]["last_name"];
-    })
-    .catch(error => console.log('error', error));
-    ;
-}
+const url = new URL(window.location.href);
 
 function fetchData() {
     var myHeaders = new Headers();
+    var claimNo = url.searchParams.get("claimNo");
+    var email = url.searchParams.get("email");
+    document.getElementById("claimNo").value = claimNo;
+    document.getElementById("modifiedBy").value = email;
+
+    var raw = JSON.stringify({"claimNo" : claimNo});
     myHeaders.append("Content-Type", "application/json");
     var requestOptions = {
-        method: 'GET',
+        method: 'POST',
         headers: myHeaders,
+        body: raw,
     };
-
-    fetch("https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev", requestOptions)
+    console.log(requestOptions);
+    var destination = "https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev/claims";
+    fetch(destination, requestOptions)
     .then(response => response.text())
     .then(result => {
         var list = JSON.parse(result);
         console.log(list);
 
         for (var key of Object.keys(list[0])) {
-            // console.log(key);
             if (document.getElementById(key) != null)
                 document.getElementById(key).value = list[0][key];
         }
-        document.getElementById("claimNo").value = list[0]["id"];
 
         var product_purchase_date = new Date(list[0]["product_purchase_date"]);
         document.getElementById("product_purchase_day").value = product_purchase_date.getDate();
@@ -80,10 +58,21 @@ function sendUpdates() {
     var contents =  document.querySelectorAll('input');   
     var object = {};
     //console.log(contents);
-    for (var i = 0; i < contents.length; i++){
-        console.log(contents[i].value);
-        object[contents[i].id] = contents[i].value;
+    try {
+        for (var i = 0; i < contents.length; i++){
+            console.log(contents[i].value);
+            if (contents[i].value === "") {
+                var message =  contents[i].id + " is empty";
+                throw message;
+            } else 
+                object[contents[i].id] = contents[i].value;
+        }
     }
+    catch (err) {
+        window.alert(err);
+        return;
+    }
+    
     object['action'] = 'POST';
     var raw = JSON.stringify(object);
     console.log(JSON.stringify(object));
@@ -98,7 +87,10 @@ function sendUpdates() {
     };
     fetch("https://d0x83sym95.execute-api.ap-southeast-2.amazonaws.com/dev", requestOptions)
     .then(response => response.text())
-    .then(result => alert(JSON.parse(result).body))
+    .then(result => console.log(JSON.parse(result).body))
     .catch(error => console.log('error', error));
+
+    window.alert("Updates sent");
+    //window.location = 'index.html';
 }
     

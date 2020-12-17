@@ -10,6 +10,11 @@
       "StackName": "amplify-brightsideportal-dev-214356",
       "StackId": "arn:aws:cloudformation:ap-southeast-2:494636966945:stack/amplify-brightsideportal-dev-214356/457d1b30-3df9-11eb-9508-0218c804214a",
       "AmplifyAppId": "d26cn353vdhtnb"
+    },
+    "categories": {
+      "auth": {
+        "brightsideportal50b75848": {}
+      }
     }
   }
 }
