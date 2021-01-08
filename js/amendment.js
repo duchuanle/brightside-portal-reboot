@@ -57,14 +57,13 @@ function sendUpdates() {
     try {
         for (var i = 0; i < contents.length; i++){
             if (contents[i].value === "") {
-                var message =  contents[i].id + " is empty";
-                throw message;
+                throw err;
             } else 
                 object[contents[i].id] = contents[i].value;
         }
     }
     catch (err) {
-        window.alert(err);
+        window.alert("Please fill in all empty fields");
         return;
     }
     
