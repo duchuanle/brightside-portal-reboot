@@ -9,12 +9,20 @@ function fetchData() {
 
     var raw = JSON.stringify({"claimNo" : claimNo});
     myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    myHeaders.append("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,Access-Control-Allow-Origin");
+    
+    // var requestOptions = {
+    //     method: 'POST',
+    //     headers: myHeaders,
+    //     body: raw,
+    // };
     var requestOptions = {
         method: 'POST',
         headers: myHeaders,
-        body: raw,
     };
-    console.log(requestOptions);
+    //var destination = "https://cycl9nt05h.execute-api.ap-southeast-2.amazonaws.com/dev";
     var destination = "https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev/claims";
     fetch(destination, requestOptions)
     .then(response => response.text())
@@ -83,7 +91,6 @@ function sendUpdates() {
         method: 'POST',
         headers: myHeaders,
         body: raw,
-        redirect: 'follow'
     };
     fetch("https://d0x83sym95.execute-api.ap-southeast-2.amazonaws.com/dev", requestOptions)
     .then(response => response.text())
