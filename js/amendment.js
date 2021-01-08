@@ -14,13 +14,11 @@ function fetchData() {
         headers: myHeaders,
         body: raw,
     };
-    console.log(requestOptions);
     var destination = "https://o0n0b9xkik.execute-api.ap-southeast-2.amazonaws.com/dev/claims";
     fetch(destination, requestOptions)
     .then(response => response.text())
     .then(result => {
         var list = JSON.parse(result);
-        console.log(list);
 
         for (var key of Object.keys(list[0])) {
             if (document.getElementById(key) != null)
@@ -39,7 +37,6 @@ function fetchData() {
 
         try {
             for (var key of Object.keys(list[0])) {
-                // console.log(key);
                 if (document.getElementById(key) != null)
                     document.getElementById(key).value = list[0][key];
                 else if (key != 'id') 
@@ -47,7 +44,7 @@ function fetchData() {
             }
         }
         catch (err){
-            window.alert(key + " is empty");
+            console.log("Empty fields error");
         }
     })
     .catch(error => console.log('error', error));
@@ -57,10 +54,8 @@ function fetchData() {
 function sendUpdates() {
     var contents =  document.querySelectorAll('input');   
     var object = {};
-    //console.log(contents);
     try {
         for (var i = 0; i < contents.length; i++){
-            console.log(contents[i].value);
             if (contents[i].value === "") {
                 var message =  contents[i].id + " is empty";
                 throw message;
@@ -75,7 +70,6 @@ function sendUpdates() {
     
     object['action'] = 'POST';
     var raw = JSON.stringify(object);
-    console.log(JSON.stringify(object));
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -86,11 +80,9 @@ function sendUpdates() {
         redirect: 'follow'
     };
     fetch("https://d0x83sym95.execute-api.ap-southeast-2.amazonaws.com/dev", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(JSON.parse(result).body))
     .catch(error => console.log('error', error));
 
     window.alert("Updates sent");
-    //window.location = 'index.html';
+    window.location = 'index.html';
 }
     
